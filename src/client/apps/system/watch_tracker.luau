@@ -42,7 +42,14 @@ return function(props: props)
 	end
 
 	local function max()
-		return math.max(1, unpack(per_frame_data()))
+		local max = 1
+		for _, count in per_frame_data() do
+			if count > max then
+				max = count
+			end
+		end
+		return max
+		--return math.max(1, unpack(per_frame_data()))
 	end
 	
 	local function total_changes()
